@@ -1,0 +1,27 @@
+package conversororacle.model;
+
+public enum Moedas {
+	
+	A("ARS", "Argentina - Peso"),
+	B("BRL", "Brasil - Real"),
+	C("USD", "Estados Unidos - Dólar"),
+	D("CLP", "Chile - Peso"),
+	E("GBP", "Reino Unido - Libra Esterlina"),
+	F("EUR", "União Europeia - Euro");
+	
+	private final String indice;
+    private static final String descricao = "";
+
+    Moedas(String indice, String descricao) {
+        this.indice = indice;
+        descricao = Moedas.descricao;
+    }
+
+    public String getIndice() {
+        return this.indice;
+    }
+    public static String getDescricao() {
+        return descricao;
+    }	
+
+}

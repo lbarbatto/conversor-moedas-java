@@ -1,0 +1,50 @@
+package conversororacle.model;
+
+public class CoversorResposta {
+	
+	private String result;
+	private String rate;
+	private String date;
+	
+	
+	public String getResult() {
+		return result;
+	}
+
+	public void setResult(String result) {
+		this.result = result;
+	}
+	public String getRate() {
+		return rate;
+	}
+	
+	public void setRate(String rate) {
+		this.rate = rate;
+	}
+	
+	public String getDate() {
+		return date;
+	}
+
+	public void setDate(String date) {
+		this.date = date;
+	}
+	
+	public void converteResposta(String resposta) {
+		
+		resposta.replaceAll("}", "");
+		String [] stringArray = resposta.split(" ");
+		setRate(stringArray[64]);
+		setDate(stringArray[73]);
+		setResult(stringArray[78]);
+		
+		for(int j=0; j < stringArray.length; j++){
+			System.out.println(j+stringArray[j]);
+		}
+	
+		System.out.println(rate + date + result);
+	
+	}
+
+
+}

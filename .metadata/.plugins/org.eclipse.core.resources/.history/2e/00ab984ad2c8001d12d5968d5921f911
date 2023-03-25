@@ -1,0 +1,18 @@
+package conversororacle.view;
+
+import conversororacle.model.Moedas;
+
+public class MenuMoedas {
+	
+	static String display;
+	
+	public static String listaMoedas() {
+		
+		for (Moedas lista : Moedas.values()) {
+		      display = lista.getDescricao());
+		  }
+		return display;
+		
+	}
+
+}

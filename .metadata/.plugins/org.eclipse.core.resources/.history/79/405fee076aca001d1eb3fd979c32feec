@@ -1,0 +1,77 @@
+package conversororacle.view;
+
+import conversororacle.model.CambioReal;
+
+public class EditaResposta {
+	MenuMoedas moedaSimbolo = new MenuMoedas();
+	
+	public String converteRespostaConversor(String resposta, int index) {
+				
+		String [] stringArray = resposta.split(",");
+		String[] resultado = stringArray[12].split(":");
+		double valor = Double.parseDouble(resultado[1].replaceAll("}", ""));
+		String respostaFinal;
+
+//		for(int j=0; j < resultado.length; j++){
+//			System.out.println(j+resultado[j]);
+//		}
+		System.out.println(valor);
+
+		String simbolo = moedaSimbolo.getSimboloMoeda(index);
+		
+		switch (index) {
+		case 0:			
+			respostaFinal = simbolo+" "+valor;
+			return respostaFinal;
+
+		case 1:
+			respostaFinal = simbolo+" "+valor;
+			return respostaFinal;
+			
+		case 2:
+			respostaFinal = simbolo+" "+valor;
+			return respostaFinal;
+			
+		case 3:
+			respostaFinal = simbolo+" "+valor;
+			return respostaFinal;
+			
+		case 4:
+			respostaFinal = simbolo+" "+valor;
+			return respostaFinal;
+			
+		case 5:
+			respostaFinal = valor+" "+simbolo;
+			return respostaFinal;
+		}
+		return null;		
+	}
+	
+	public void converteRespostaCambio(String resposta) {
+		String [] stringArray = resposta.split(",");
+		CambioReal cambio = new CambioReal();
+		String[] resultado = stringArray[17].split(":");
+		
+		cambio.setArs(moedaSimbolo.getSimboloMoeda(0) + " " + resultado[1]);
+		resultado = stringArray[38].split(":");
+		cambio.setClp(moedaSimbolo.getSimboloMoeda(2) + " " + resultado[1]);
+		resultado = stringArray[52].split(":");
+		cambio.setEur(resultado[1] + " " + moedaSimbolo.getSimboloMoeda(5));
+		resultado = stringArray[56].split(":");
+		cambio.setGbp(moedaSimbolo.getSimboloMoeda(4) + " " + resultado[1]);
+		resultado = stringArray[156].split(":");
+		cambio.setUsd(moedaSimbolo.getSimboloMoeda(3) + " " + resultado[1]);
+		resultado = stringArray[5].split(" ");
+		cambio.setData(resultado[1]+"/"+resultado[2]+"/"+resultado[3]);
+
+		System.out.println(cambio.getData()+cambio.getArs()+cambio.getClp()+cambio.getEur()+cambio.getGbp()+cambio.getUsd());
+//		String[] resultado = stringArray[12].split(":");
+//		double valor = Double.parseDouble(resultado[1].replaceAll("}", ""));
+//		String respostaFinal;
+
+//		for(int j=0; j < stringArray.length; j++){
+//			System.out.println(j+stringArray[j]);
+//		}
+	}
+
+}

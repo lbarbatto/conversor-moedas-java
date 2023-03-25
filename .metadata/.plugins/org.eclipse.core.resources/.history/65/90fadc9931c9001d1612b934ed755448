@@ -1,0 +1,51 @@
+package conversororacle.view;
+
+import conversororacle.model.Moedas;
+
+public class MenuMoedas {
+	
+    private String[] listaMoedas = (new String[] {
+			Moedas.A.getDescricao(),
+			Moedas.B.getDescricao(),
+			Moedas.C.getDescricao(),
+			Moedas.D.getDescricao(),
+			Moedas.E.getDescricao(),
+			Moedas.F.getDescricao()});
+	
+	public String[] getListaMoedas() {
+		return listaMoedas;		
+		
+	}
+	
+	public String getCodidoMoeda(String string) {
+		String indiceMoeda = Moedas.valueOf(string).toString();
+		switch (indiceMoeda) {
+		case "Argentina - Peso":
+			return "ARS";
+
+		case "Brasil - Real":
+					
+			return "BRL";
+					
+		case "Chile - Peso":
+			
+			return "CLP";
+			
+		case "Estados Unidos - Dólar":
+			
+			return "USD";
+			
+		case "Reino Unido - Libra Esterlina":
+			
+			return "GBP";
+			
+		case "União Europeia - Euro":
+			
+			return "EUR";
+
+		}		
+		return null;
+		
+	}
+
+}

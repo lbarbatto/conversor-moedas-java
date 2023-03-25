@@ -1,0 +1,11 @@
+package conversororacle.model;
+
+public enum Moedas {
+	ARGENTINA - PESO,
+	BRASIL - REAL,
+	ESTADOS UUNIDOS - DÓLAR,
+	CHILE - PESO,
+	REINO UNIDO - LIBRA ESTERLINA,
+	UNIÃO EURPEIA - EURO;
+
+}

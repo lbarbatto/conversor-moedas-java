@@ -1,0 +1,33 @@
+package conversororacle.model;
+
+public class CoversorResposta {
+	
+	private String conversion_result;
+	private String conversion_rate;
+	private String time_last_update_utc;
+	
+	
+	public String getResult() {
+		return conversion_result;
+	}
+
+	public void setResult(String result) {
+		this.conversion_result = result;
+	}
+	public String getRate() {
+		return conversion_rate;
+	}
+	
+	public void setRate(String rate) {
+		this.conversion_rate = rate;
+	}
+	
+	public String getDate() {
+		return time_last_update_utc;
+	}
+
+	public void setDate(String date) {
+		this.time_last_update_utc = date;
+	}
+
+}

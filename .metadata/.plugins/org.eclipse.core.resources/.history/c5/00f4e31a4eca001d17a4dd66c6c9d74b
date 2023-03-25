@@ -1,0 +1,65 @@
+package conversororacle.view;
+
+import com.google.gson.Gson;
+
+import conversororacle.model.CoversorResposta;
+
+public class EditaResposta {
+	
+	public void converteRespostaConversor(String resposta, int index) {
+		
+		// --- transformando em Objeto Java --- //
+		Gson gson = new Gson(); // conversor
+		CoversorResposta objCliente = gson.fromJson(resposta, CoversorResposta.class);
+		
+		// exibindo dados em Java //
+		System.out.println( objCliente.getResult() );
+		System.out.println( objCliente.getRate() );
+		System.out.println( objCliente.getDate() );
+	}
+		
+/*		resposta.replaceAll("}", " ");
+		String [] stringArray = resposta.split(",");
+		setRate(stringArray[64]);
+		setDate(stringArray[73]);
+		setResult(stringArray[78].replace("}", ""));
+
+		for(int j=0; j < stringArray.length; j++){
+			System.out.println(j+stringArray[j]);
+		}
+	
+		System.out.println(rate + date + result);
+
+		MenuMoedas moedaSimbolo = new MenuMoedas();
+		String simbolo = moedaSimbolo.getSimboloMoeda(index);
+		
+		switch (index) {
+		case 0:			
+			
+			return simbolo+" "+result;
+
+		case 1:
+			
+			break;
+			
+		case 2:
+			
+			break;
+			
+		case 3:
+			
+			break;
+			
+		case 4:
+			
+			break;
+			
+		case 5:
+			
+			break;
+		}
+		return simbolo;
+*/		
+	}
+
+}

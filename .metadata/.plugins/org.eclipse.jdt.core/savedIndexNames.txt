@@ -1,0 +1,6 @@
+INDEX VERSION 1.131+D:\_Alura\009_conversor_v02\_dev\.metadata\.plugins\org.eclipse.jdt.core
+3950731081.index
+1865797976.index
+447614943.index
+49787887.index
+4164882945.index

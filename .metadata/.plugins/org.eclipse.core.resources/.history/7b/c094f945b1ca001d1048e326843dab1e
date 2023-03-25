@@ -1,0 +1,450 @@
+package conversororacle.view;
+
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+
+
+import conversororacle.controller.ClienteHttp;
+import conversororacle.controller.ValidaEntrada;
+import conversororacle.model.CambioReal;
+import conversororacle.model.CoversorResposta;
+
+import javax.swing.JLabel;
+import javax.swing.JButton;
+import java.awt.Font;
+import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.awt.event.ActionEvent;
+import javax.swing.SwingConstants;
+import javax.swing.JComboBox;
+import javax.swing.DefaultComboBoxModel;
+
+import javax.swing.JTextField;
+import javax.swing.ImageIcon;
+import java.awt.Color;
+import javax.swing.border.LineBorder;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+
+public class TelaPrincipal extends JFrame {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private JPanel contentPane;
+	private JTextField textEntrada;
+	private String from;
+	private String to;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					TelaPrincipal frame = new TelaPrincipal();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public TelaPrincipal() {
+		setTitle("Oracle One Educatio");
+		setFont(new Font("Verdana", Font.PLAIN, 14));
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 800, 600);
+		contentPane = new JPanel();
+		contentPane.setBackground(new Color(128, 0, 0));
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		JPanel panelConversor = new JPanel();
+		panelConversor.setName("painelConversor");
+		panelConversor.setBackground(new Color(128, 0, 0));
+		panelConversor.setBounds(152, 150, 480, 350);
+		contentPane.add(panelConversor);
+		panelConversor.setLayout(null);		
+				
+				textEntrada = new JTextField();
+				textEntrada.setFocusCycleRoot(true);
+				textEntrada.requestFocusInWindow();
+				textEntrada.setHorizontalAlignment(SwingConstants.CENTER);
+				textEntrada.setBorder(null);
+				textEntrada.setForeground(new Color(64, 0, 0));
+				textEntrada.setBackground(new Color(255, 255, 255));
+				textEntrada.setFont(new Font("Verdana", Font.PLAIN, 16));
+				textEntrada.setBounds(335, 130, 120, 30);
+				panelConversor.add(textEntrada);
+				textEntrada.setColumns(10);
+
+		
+				JLabel lblResultado = new JLabel("");
+				lblResultado.setForeground(new Color(255, 255, 255));
+				lblResultado.setFont(new Font("Verdana", Font.BOLD, 16));
+				lblResultado.setHorizontalAlignment(SwingConstants.CENTER);
+				lblResultado.setBounds(335, 210, 120, 30);
+				panelConversor.add(lblResultado);
+				
+				JLabel lblNewLabel = new JLabel("Converter de:");
+				lblNewLabel.setForeground(new Color(255, 255, 255));
+				lblNewLabel.setFont(new Font("Verdana", Font.PLAIN, 14));
+				lblNewLabel.setBounds(10, 100, 235, 30);
+				panelConversor.add(lblNewLabel);
+				
+				JLabel lblNewLabel_1 = new JLabel("Converter para:");
+				lblNewLabel_1.setForeground(new Color(255, 255, 255));
+				lblNewLabel_1.setFont(new Font("Verdana", Font.PLAIN, 14));
+				lblNewLabel_1.setBounds(10, 180, 235, 30);
+				panelConversor.add(lblNewLabel_1);
+				
+				JComboBox boxDe = new JComboBox();
+				boxDe.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						int index = boxDe.getSelectedIndex();
+						MenuMoedas codigoMoeda = new MenuMoedas();
+						from = codigoMoeda.getCodidoMoeda(index);			
+					}
+				});
+				boxDe.setBorder(null);
+				boxDe.setBackground(new Color(255, 255, 255));
+				boxDe.setForeground(new Color(64, 0, 0));
+				boxDe.setModel(new DefaultComboBoxModel(new MenuMoedas().getListaMoedas()));
+				boxDe.setSelectedIndex(0);
+				boxDe.setFont(new Font("Tahoma", Font.PLAIN, 16));
+				boxDe.setBounds(10, 130, 235, 30);
+				panelConversor.add(boxDe);
+				
+				JComboBox boxPara = new JComboBox();
+				boxPara.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						int index = boxPara.getSelectedIndex();
+						MenuMoedas codigoMoeda = new MenuMoedas();
+						to = codigoMoeda.getCodidoMoeda(index);
+					}
+				});
+				boxPara.setBorder(null);
+				boxPara.setForeground(new Color(64, 0, 0));
+				boxPara.setBackground(new Color(255, 255, 255));
+				boxPara.setFont(new Font("Tahoma", Font.PLAIN, 16));
+				boxPara.setModel(new DefaultComboBoxModel(new MenuMoedas().getListaMoedas()));
+				boxPara.setSelectedIndex(1);
+				boxPara.setBounds(10, 210, 235, 30);
+				panelConversor.add(boxPara);
+				
+				JLabel lblNewLabel_2 = new JLabel("Conversor de Moedas");
+				lblNewLabel_2.setForeground(new Color(255, 255, 255));
+				lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
+				lblNewLabel_2.setFont(new Font("Verdana", Font.BOLD, 24));
+				lblNewLabel_2.setBounds(90, 11, 300, 50);
+				panelConversor.add(lblNewLabel_2);
+				
+				JLabel lblNewLabel_3 = new JLabel("Insira o Valor:");
+				lblNewLabel_3.setForeground(new Color(255, 255, 255));
+				lblNewLabel_3.setHorizontalAlignment(SwingConstants.CENTER);
+				lblNewLabel_3.setFont(new Font("Verdana", Font.PLAIN, 14));
+				lblNewLabel_3.setBounds(345, 100, 100, 30);
+				panelConversor.add(lblNewLabel_3);
+				
+				JLabel lblNewLabel_4 = new JLabel("Valor Convertido:");
+				lblNewLabel_4.setForeground(new Color(255, 255, 255));
+				lblNewLabel_4.setFont(new Font("Verdana", Font.PLAIN, 14));
+				lblNewLabel_4.setBounds(333, 180, 124, 30);
+				panelConversor.add(lblNewLabel_4);
+				
+				JButton btnNewButton = new JButton("CONVERTER");
+				btnNewButton.setForeground(new Color(64, 0, 0));
+				btnNewButton.setBorder(null);
+				btnNewButton.setBackground(new Color(255, 255, 255));
+				btnNewButton.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						String entrada = textEntrada.getText();
+						ClienteHttp cliente = new ClienteHttp();				
+						ValidaEntrada entradaValida = new ValidaEntrada();					
+						
+						if (entradaValida.entradaValida(entrada)) {
+							double amount = entradaValida.getAmount(entrada);
+							try {
+								lblResultado.setText(cliente.getConversao(to, from, amount, boxPara.getSelectedIndex()));
+							} catch (IOException e1) {
+								// TODO Auto-generated catch block
+								e1.printStackTrace();
+							} catch (InterruptedException e1) {
+								// TODO Auto-generated catch block
+								e1.printStackTrace();
+							}
+							
+						}				
+					}
+				});
+				btnNewButton.setFont(new Font("Verdana", Font.BOLD, 16));
+				btnNewButton.setBounds(165, 309, 150, 30);
+				panelConversor.add(btnNewButton);
+		
+		JPanel panel = new JPanel();
+		panel.setBackground(new Color(255, 255, 255));
+		panel.setBounds(0, 0, 784, 120);
+		contentPane.add(panel);
+		panel.setLayout(null);		
+		
+		
+		
+		JLabel lblNewLabel_5 = new JLabel("");
+		lblNewLabel_5.setHorizontalTextPosition(SwingConstants.CENTER);
+		lblNewLabel_5.setIcon(new ImageIcon("D:\\_Alura\\009_conversor_v02\\_dev\\conversororacle\\src\\conversororacle\\view\\img\\oracle.png"));
+		lblNewLabel_5.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_5.setFont(new Font("Verdana", Font.PLAIN, 11));
+		lblNewLabel_5.setBounds(50, 10, 100, 100);
+		panel.add(lblNewLabel_5);
+		
+		JPanel panelIndicadores = new JPanel();
+		panelIndicadores.setBounds(32, 150, 720, 380);
+		contentPane.add(panelIndicadores);
+		panelIndicadores.setVisible(false);
+		panelIndicadores.setName("painelIndicadores");
+		panelIndicadores.setBackground(new Color(128, 0, 0));
+		panelIndicadores.setLayout(null);
+		
+		JLabel lblNewLabel_6_5 = new JLabel("União Europeia - Euro");
+		lblNewLabel_6_5.setVerticalAlignment(SwingConstants.BOTTOM);
+		lblNewLabel_6_5.setOpaque(true);
+		lblNewLabel_6_5.setBackground(new Color(255, 255, 255));
+		lblNewLabel_6_5.setForeground(new Color(64, 0, 0));
+		lblNewLabel_6_5.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_6_5.setFont(new Font("Verdana", Font.PLAIN, 12));
+		lblNewLabel_6_5.setBounds(412, 260, 200, 25);
+		panelIndicadores.add(lblNewLabel_6_5);
+		
+		JLabel lblNewLabel_6_2 = new JLabel("Chile - Peso");
+		lblNewLabel_6_2.setVerticalAlignment(SwingConstants.BOTTOM);
+		lblNewLabel_6_2.setOpaque(true);
+		lblNewLabel_6_2.setBackground(new Color(255, 255, 255));
+		lblNewLabel_6_2.setForeground(new Color(64, 0, 0));
+		lblNewLabel_6_2.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_6_2.setFont(new Font("Verdana", Font.PLAIN, 12));
+		lblNewLabel_6_2.setBounds(260, 140, 200, 25);
+		panelIndicadores.add(lblNewLabel_6_2);
+		
+		JLabel lblNewLabel_6_4 = new JLabel("Reuino Unido - Libra Esterlina");
+		lblNewLabel_6_4.setVerticalAlignment(SwingConstants.BOTTOM);
+		lblNewLabel_6_4.setOpaque(true);
+		lblNewLabel_6_4.setBackground(new Color(255, 255, 255));
+		lblNewLabel_6_4.setForeground(new Color(64, 0, 0));
+		lblNewLabel_6_4.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_6_4.setFont(new Font("Verdana", Font.PLAIN, 12));
+		lblNewLabel_6_4.setBounds(106, 260, 200, 25);
+		panelIndicadores.add(lblNewLabel_6_4);
+		
+		JLabel lblNewLabel_8 = new JLabel("Ultima Atualização:");
+		lblNewLabel_8.setForeground(new Color(255, 255, 255));
+		lblNewLabel_8.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_8.setFont(new Font("Verdana", Font.PLAIN, 12));
+		lblNewLabel_8.setBounds(260, 320, 200, 25);
+		panelIndicadores.add(lblNewLabel_8);
+		
+		JLabel lblArg = new JLabel("New label");
+		lblArg.setOpaque(true);
+		lblArg.setBackground(new Color(255, 255, 255));
+		lblArg.setForeground(new Color(64, 0, 0));
+		lblArg.setHorizontalAlignment(SwingConstants.CENTER);
+		lblArg.setFont(new Font("Verdana", Font.BOLD, 14));
+		lblArg.setBounds(10, 165, 200, 25);
+		panelIndicadores.add(lblArg);
+		
+		JLabel lblChi = new JLabel("New label");
+		lblChi.setOpaque(true);
+		lblChi.setBackground(new Color(255, 255, 255));
+		lblChi.setForeground(new Color(64, 0, 0));
+		lblChi.setHorizontalAlignment(SwingConstants.CENTER);
+		lblChi.setFont(new Font("Verdana", Font.BOLD, 14));
+		lblChi.setBounds(260, 165, 200, 25);
+		panelIndicadores.add(lblChi);
+		
+		JLabel lblRu = new JLabel("New label");
+		lblRu.setOpaque(true);
+		lblRu.setBackground(new Color(255, 255, 255));
+		lblRu.setForeground(new Color(64, 0, 0));
+		lblRu.setHorizontalAlignment(SwingConstants.CENTER);
+		lblRu.setFont(new Font("Verdana", Font.BOLD, 14));
+		lblRu.setBounds(106, 285, 200, 25);
+		panelIndicadores.add(lblRu);
+		
+		JLabel lblNewLabel_6_3 = new JLabel("Estados Unidos - Dólar");
+		lblNewLabel_6_3.setVerticalAlignment(SwingConstants.BOTTOM);
+		lblNewLabel_6_3.setOpaque(true);
+		lblNewLabel_6_3.setBackground(new Color(255, 255, 255));
+		lblNewLabel_6_3.setForeground(new Color(64, 0, 0));
+		lblNewLabel_6_3.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_6_3.setFont(new Font("Verdana", Font.PLAIN, 12));
+		lblNewLabel_6_3.setBounds(510, 140, 200, 25);
+		panelIndicadores.add(lblNewLabel_6_3);
+		
+		JLabel lblData = new JLabel("");
+		lblData.setForeground(new Color(255, 255, 255));
+		lblData.setHorizontalAlignment(SwingConstants.CENTER);
+		lblData.setFont(new Font("Verdana", Font.ITALIC, 12));
+		lblData.setBounds(260, 345, 200, 25);
+		panelIndicadores.add(lblData);
+		
+		JLabel lblUe = new JLabel("New label");
+		lblUe.setOpaque(true);
+		lblUe.setBackground(new Color(255, 255, 255));
+		lblUe.setForeground(new Color(64, 0, 0));
+		lblUe.setHorizontalAlignment(SwingConstants.CENTER);
+		lblUe.setFont(new Font("Verdana", Font.BOLD, 14));
+		lblUe.setBounds(412, 285, 200, 25);
+		panelIndicadores.add(lblUe);
+		
+		JLabel lblEua = new JLabel("New label");
+		lblEua.setOpaque(true);
+		lblEua.setBackground(new Color(255, 255, 255));
+		lblEua.setForeground(new Color(64, 0, 0));
+		lblEua.setHorizontalAlignment(SwingConstants.CENTER);
+		lblEua.setFont(new Font("Verdana", Font.BOLD, 14));
+		lblEua.setBounds(510, 165, 200, 25);
+		panelIndicadores.add(lblEua);
+		
+		JLabel lblNewLabel_6 = new JLabel("Argentina - Peso");
+		lblNewLabel_6.setVerticalAlignment(SwingConstants.BOTTOM);
+		lblNewLabel_6.setOpaque(true);
+		lblNewLabel_6.setBackground(new Color(255, 255, 255));
+		lblNewLabel_6.setForeground(new Color(64, 0, 0));
+		lblNewLabel_6.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_6.setFont(new Font("Verdana", Font.PLAIN, 12));
+		lblNewLabel_6.setBounds(10, 140, 200, 25);
+		panelIndicadores.add(lblNewLabel_6);
+		
+		JLabel lblNewLabel_7 = new JLabel("Taxas da Câmbio para o Real");
+		lblNewLabel_7.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_7.setFont(new Font("Verdana", Font.BOLD, 24));
+		lblNewLabel_7.setForeground(new Color(255, 255, 255));
+		lblNewLabel_7.setBounds(60, 10, 600, 50);
+		panelIndicadores.add(lblNewLabel_7);
+		
+		JLabel lblNewLabel_9 = new JLabel("New label");
+		lblNewLabel_9.setBorder(new LineBorder(new Color(255, 255, 255), 2));
+		lblNewLabel_9.setIcon(new ImageIcon("D:\\_Alura\\009_conversor_v02\\_dev\\conversororacle\\src\\conversororacle\\view\\img\\flagArg.png"));
+		lblNewLabel_9.setBounds(10, 80, 200, 60);
+		panelIndicadores.add(lblNewLabel_9);
+		
+		JLabel lblNewLabel_9_1 = new JLabel("");
+		lblNewLabel_9_1.setBorder(new LineBorder(new Color(255, 255, 255), 2));
+		lblNewLabel_9_1.setBackground(new Color(255, 255, 255));
+		lblNewLabel_9_1.setIcon(new ImageIcon("D:\\_Alura\\009_conversor_v02\\_dev\\conversororacle\\src\\conversororacle\\view\\img\\flagChi.png"));
+		lblNewLabel_9_1.setBounds(260, 80, 200, 60);
+		panelIndicadores.add(lblNewLabel_9_1);
+		
+		JLabel lblNewLabel_9_2 = new JLabel("");
+		lblNewLabel_9_2.setIcon(new ImageIcon("D:\\_Alura\\009_conversor_v02\\_dev\\conversororacle\\src\\conversororacle\\view\\img\\flagEua.png"));
+		lblNewLabel_9_2.setBorder(new LineBorder(new Color(255, 255, 255), 2));
+		lblNewLabel_9_2.setBounds(510, 80, 200, 60);
+		panelIndicadores.add(lblNewLabel_9_2);
+		
+		JLabel lblNewLabel_9_2_1 = new JLabel("");
+		lblNewLabel_9_2_1.setIcon(new ImageIcon("D:\\_Alura\\009_conversor_v02\\_dev\\conversororacle\\src\\conversororacle\\view\\img\\flagRu.png"));
+		lblNewLabel_9_2_1.setBorder(new LineBorder(new Color(255, 255, 255), 2));
+		lblNewLabel_9_2_1.setBounds(106, 200, 200, 60);
+		panelIndicadores.add(lblNewLabel_9_2_1);
+		
+		JLabel lblNewLabel_9_2_1_1 = new JLabel("");
+		lblNewLabel_9_2_1_1.setIcon(new ImageIcon("D:\\_Alura\\009_conversor_v02\\_dev\\conversororacle\\src\\conversororacle\\view\\img\\flagUeu.png"));
+		lblNewLabel_9_2_1_1.setBorder(new LineBorder(new Color(255, 255, 255), 2));
+		lblNewLabel_9_2_1_1.setBounds(412, 200, 200, 60);
+		panelIndicadores.add(lblNewLabel_9_2_1_1);
+		
+		JButton btnTelaConversor = new JButton("");
+		btnTelaConversor.setFocusPainted(false);
+		btnTelaConversor.setBorderPainted(false);
+		btnTelaConversor.setBorder(null);
+		btnTelaConversor.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				btnTelaConversor.setOpaque(true);
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				btnTelaConversor.setOpaque(false);
+			}
+		});
+		btnTelaConversor.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				panelConversor.setVisible(true);
+				panelIndicadores.setVisible(false);
+			}
+		});
+		btnTelaConversor.setBackground(new Color(255, 128, 128));
+		btnTelaConversor.setOpaque(false);
+		btnTelaConversor.setIcon(new ImageIcon("D:\\_Alura\\009_conversor_v02\\_dev\\conversororacle\\src\\conversororacle\\view\\img\\calculadora.png"));
+		btnTelaConversor.setToolTipText("CONVERSOR");
+		btnTelaConversor.setBounds(500, 60, 60, 60);
+		panel.add(btnTelaConversor);
+		
+		JButton btnTelaIndicadores = new JButton("");
+		btnTelaIndicadores.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				btnTelaIndicadores.setOpaque(true);				
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				btnTelaIndicadores.setOpaque(false);
+			}
+		});
+		btnTelaIndicadores.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				panelConversor.setVisible(false);
+				panelIndicadores.setVisible(true);
+				ClienteHttp cliente = new ClienteHttp();
+				
+				CambioReal cambio = (CambioReal) cliente.getCambio();;
+				lblArg.setText(cambio.getArs());
+				lblChi.setText(cambio.getClp());
+				lblEua.setText(cambio.getUsd());
+				lblRu.setText(cambio.getGbp());
+				lblUe.setText(cambio.getEur());
+				lblData.setText(cambio.getData());
+				
+				System.out.println(cambio.getData()+cambio.getArs()+cambio.getClp()+cambio.getEur()+cambio.getGbp()+cambio.getUsd());
+				
+			}
+		});
+		btnTelaIndicadores.setBackground(new Color(255, 128, 128));
+		btnTelaIndicadores.setOpaque(false);
+		btnTelaIndicadores.setBorder(null);
+		btnTelaIndicadores.setIcon(new ImageIcon("D:\\_Alura\\009_conversor_v02\\_dev\\conversororacle\\src\\conversororacle\\view\\img\\indicadores.png"));
+		btnTelaIndicadores.setToolTipText("INDICADORES");
+		btnTelaIndicadores.setBounds(570, 60, 60, 60);
+		panel.add(btnTelaIndicadores);
+		
+		JButton btnInfos = new JButton("");
+		btnInfos.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				btnInfos.setOpaque(true);
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				btnInfos.setOpaque(false);
+			}
+		});
+		btnInfos.setBackground(new Color(255, 128, 128));
+		btnInfos.setOpaque(false);
+		btnInfos.setBorder(null);
+		btnInfos.setIcon(new ImageIcon("D:\\_Alura\\009_conversor_v02\\_dev\\conversororacle\\src\\conversororacle\\view\\img\\informacoes.png"));
+		btnInfos.setToolTipText("INFORMAÇÕES");
+		btnInfos.setBounds(640, 60, 60, 60);
+		panel.add(btnInfos);
+	}
+}

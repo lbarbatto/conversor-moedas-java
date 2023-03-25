@@ -1,0 +1,207 @@
+package conversororacle.view;
+
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+
+import conversororacle.controller.ClienteHttp;
+
+import javax.swing.JLabel;
+import javax.swing.JButton;
+import java.awt.Font;
+import java.awt.event.ActionListener;
+import java.awt.font.NumericShaper.Range;
+import java.io.IOException;
+import java.awt.event.ActionEvent;
+import javax.swing.SwingConstants;
+import javax.swing.JComboBox;
+import javax.swing.DefaultComboBoxModel;
+import conversororacle.model.Moedas;
+import javax.swing.JTextField;
+import javax.swing.ImageIcon;
+import javax.swing.UIManager;
+import java.awt.Color;
+
+public class TelaPrincipal extends JFrame {
+
+	private JPanel contentPane;
+	private JTextField textEntrada;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					TelaPrincipal frame = new TelaPrincipal();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public TelaPrincipal() {
+		setTitle("Oracle One Educatio");
+		setFont(new Font("Verdana", Font.PLAIN, 14));
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 800, 600);
+		contentPane = new JPanel();
+		contentPane.setBackground(new Color(128, 0, 0));
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		JPanel panel = new JPanel();
+		panel.setBackground(new Color(255, 255, 255));
+		panel.setBounds(0, 0, 784, 120);
+		contentPane.add(panel);
+		panel.setLayout(null);
+		
+		JButton btnNewButton_1 = new JButton("");
+		btnNewButton_1.setBackground(new Color(255, 255, 255));
+		btnNewButton_1.setOpaque(false);
+		btnNewButton_1.setBorder(null);
+		btnNewButton_1.setIcon(new ImageIcon("D:\\_Alura\\009_conversor_v02\\_dev\\conversororacle\\src\\conversororacle\\view\\img\\calculadora.png"));
+		btnNewButton_1.setToolTipText("CONVERSOR");
+		btnNewButton_1.setBounds(500, 60, 50, 50);
+		panel.add(btnNewButton_1);
+		
+		JButton btnNewButton_2 = new JButton("");
+		btnNewButton_2.setBackground(new Color(255, 255, 255));
+		btnNewButton_2.setOpaque(false);
+		btnNewButton_2.setBorder(null);
+		btnNewButton_2.setIcon(new ImageIcon("D:\\_Alura\\009_conversor_v02\\_dev\\conversororacle\\src\\conversororacle\\view\\img\\indicadores.png"));
+		btnNewButton_2.setToolTipText("INDICADORES");
+		btnNewButton_2.setBounds(570, 60, 50, 50);
+		panel.add(btnNewButton_2);
+		
+		JButton btnNewButton_3 = new JButton("");
+		btnNewButton_3.setBackground(new Color(255, 255, 255));
+		btnNewButton_3.setOpaque(false);
+		btnNewButton_3.setBorder(null);
+		btnNewButton_3.setIcon(new ImageIcon("D:\\_Alura\\009_conversor_v02\\_dev\\conversororacle\\src\\conversororacle\\view\\img\\informacoes.png"));
+		btnNewButton_3.setToolTipText("INFORMAÇÕES");
+		btnNewButton_3.setBounds(640, 60, 50, 50);
+		panel.add(btnNewButton_3);
+		
+		JLabel lblNewLabel_5 = new JLabel("");
+		lblNewLabel_5.setHorizontalTextPosition(SwingConstants.CENTER);
+		lblNewLabel_5.setIcon(new ImageIcon("D:\\_Alura\\009_conversor_v02\\_dev\\conversororacle\\src\\conversororacle\\view\\img\\oracle.png"));
+		lblNewLabel_5.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_5.setFont(new Font("Verdana", Font.PLAIN, 11));
+		lblNewLabel_5.setBounds(50, 10, 100, 100);
+		panel.add(lblNewLabel_5);
+		
+		JPanel panel_1 = new JPanel();
+		panel_1.setBackground(new Color(128, 0, 0));
+		panel_1.setBounds(152, 130, 480, 350);
+		contentPane.add(panel_1);
+		panel_1.setLayout(null);
+		
+		JLabel lblResultado = new JLabel("New label");
+		lblResultado.setForeground(new Color(255, 255, 255));
+		lblResultado.setFont(new Font("Verdana", Font.BOLD, 16));
+		lblResultado.setHorizontalAlignment(SwingConstants.CENTER);
+		lblResultado.setBounds(320, 210, 150, 30);
+		panel_1.add(lblResultado);
+		
+		JButton btnNewButton = new JButton("CONVERTER");
+		btnNewButton.setForeground(new Color(64, 0, 0));
+		btnNewButton.setBorder(null);
+		btnNewButton.setBackground(new Color(255, 128, 128));
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				MenuMoedas menu = new MenuMoedas();
+				menu.getListaMoedas();
+/*				ClienteHttp cliente = new ClienteHttp();
+				try {
+					lblResultado.setText(cliente.getConversao("eur", "gbp", "100"));
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (InterruptedException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}*/
+			}
+		});
+		btnNewButton.setFont(new Font("Verdana", Font.BOLD, 16));
+		btnNewButton.setBounds(165, 309, 150, 30);
+		panel_1.add(btnNewButton);
+		
+		JLabel lblNewLabel = new JLabel("Converter de:");
+		lblNewLabel.setForeground(new Color(255, 255, 255));
+		lblNewLabel.setFont(new Font("Verdana", Font.PLAIN, 14));
+		lblNewLabel.setBounds(10, 100, 235, 30);
+		panel_1.add(lblNewLabel);
+		
+		JLabel lblNewLabel_1 = new JLabel("Converter para:");
+		lblNewLabel_1.setForeground(new Color(255, 255, 255));
+		lblNewLabel_1.setFont(new Font("Verdana", Font.PLAIN, 14));
+		lblNewLabel_1.setBounds(10, 180, 235, 30);
+		panel_1.add(lblNewLabel_1);
+		
+		JComboBox comboBox = new JComboBox();
+		comboBox.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
+		comboBox.setBorder(null);
+		comboBox.setBackground(new Color(255, 255, 255));
+		comboBox.setForeground(new Color(64, 0, 0));
+		comboBox.setModel(new DefaultComboBoxModel(new MenuMoedas().getListaMoedas()));
+		comboBox.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		comboBox.setBounds(10, 130, 235, 30);
+		panel_1.add(comboBox);
+		
+		JComboBox comboBox_1 = new JComboBox();
+		comboBox_1.setBorder(null);
+		comboBox_1.setForeground(new Color(64, 0, 0));
+		comboBox_1.setBackground(new Color(255, 255, 255));
+		comboBox_1.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		comboBox_1.setModel(new DefaultComboBoxModel(new MenuMoedas().getListaMoedas()));
+		comboBox_1.setBounds(10, 210, 235, 30);
+		panel_1.add(comboBox_1);
+		
+		JLabel lblNewLabel_2 = new JLabel("Conversor de Moedas");
+		lblNewLabel_2.setForeground(new Color(255, 255, 255));
+		lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_2.setFont(new Font("Verdana", Font.BOLD, 24));
+		lblNewLabel_2.setBounds(90, 11, 300, 50);
+		panel_1.add(lblNewLabel_2);
+		
+		JLabel lblNewLabel_3 = new JLabel("Insira o Valor:");
+		lblNewLabel_3.setForeground(new Color(255, 255, 255));
+		lblNewLabel_3.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_3.setFont(new Font("Verdana", Font.PLAIN, 14));
+		lblNewLabel_3.setBounds(345, 100, 100, 30);
+		panel_1.add(lblNewLabel_3);
+		
+		textEntrada = new JTextField();
+		textEntrada.setHorizontalAlignment(SwingConstants.CENTER);
+		textEntrada.setBorder(null);
+		textEntrada.setForeground(new Color(64, 0, 0));
+		textEntrada.setBackground(new Color(255, 255, 255));
+		textEntrada.setFont(new Font("Verdana", Font.PLAIN, 16));
+		textEntrada.setBounds(335, 130, 120, 30);
+		panel_1.add(textEntrada);
+		textEntrada.setColumns(10);
+		
+		JLabel lblNewLabel_4 = new JLabel("Valor Convertido:");
+		lblNewLabel_4.setForeground(new Color(255, 255, 255));
+		lblNewLabel_4.setFont(new Font("Verdana", Font.PLAIN, 14));
+		lblNewLabel_4.setBounds(333, 180, 124, 30);
+		panel_1.add(lblNewLabel_4);
+	}
+}

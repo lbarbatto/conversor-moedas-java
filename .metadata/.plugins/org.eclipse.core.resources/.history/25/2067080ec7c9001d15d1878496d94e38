@@ -1,0 +1,28 @@
+package conversororacle.controller;
+
+public class ValidaEntrada {
+	
+	public Boolean entradaValida(String entrada) {
+		
+		if (entrada != null) {
+			if (entrada.matches("[0-9]*")) {
+				entrada = entrada.replaceAll(",",  ".");
+				return true;
+				
+			} else {
+
+			}
+			
+			
+		} else {
+			
+			
+		}
+		
+		
+		
+		return null;
+		
+	}
+
+}

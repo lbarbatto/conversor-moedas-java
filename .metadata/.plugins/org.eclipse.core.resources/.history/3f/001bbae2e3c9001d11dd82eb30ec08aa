@@ -1,0 +1,28 @@
+package conversororacle.model;
+
+import java.lang.reflect.Type;
+import java.util.ArrayList;
+
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+public class JsonParaObjeto {
+	
+	public void converteResposta(String resposta) {
+				
+		
+		// --- convertendo para json --- //
+		Gson gson = new Gson();
+		
+		Type tipoLista = new TypeToken<ArrayList<String>>() {}.getType();
+		ArrayList<String> lista = gson.fromJson(resposta, tipoLista);
+		
+		// --- exibindo json --- //
+		for(String item : lista)
+		{
+			System.out.println(item);
+		}
+		
+	}
+
+}

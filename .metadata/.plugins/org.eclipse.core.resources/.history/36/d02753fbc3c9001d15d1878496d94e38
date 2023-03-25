@@ -1,0 +1,12 @@
+package conversororacle.controller;
+
+public class ValidaEntrada {
+	
+	public Boolean entradaValida(String entrada) {
+		
+		
+		return null;
+		
+	}
+
+}

@@ -1,0 +1,50 @@
+package conversororacle.view;
+
+import conversororacle.model.Moedas;
+
+public class MenuMoedas {
+	
+    private String[] listaMoedas = (new String[] {
+			Moedas.A.getDescricao(),
+			Moedas.B.getDescricao(),
+			Moedas.C.getDescricao(),
+			Moedas.D.getDescricao(),
+			Moedas.E.getDescricao(),
+			Moedas.F.getDescricao()});
+	
+	public String[] getListaMoedas() {
+		return listaMoedas;		
+		
+	}
+	
+	public String getCodidoMoeda(int index) {
+		switch (index) {
+		case 0:
+			return "ARS";
+
+		case 1:
+					
+			return "BRL";
+					
+		case 2:
+			
+			return "CLP";
+			
+		case 3:
+			
+			return "USD";
+			
+		case 4:
+			
+			return "GBP";
+			
+		case 5:
+			
+			return "EUR";
+
+		}		
+		return null;
+		
+	}
+
+}

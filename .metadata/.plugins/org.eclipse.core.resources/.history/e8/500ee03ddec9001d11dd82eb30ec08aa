@@ -1,0 +1,17 @@
+package conversororacle.model;
+
+import com.google.gson.Gson;
+
+public class JsonParaObjeto {
+	
+	public void converteResposta(String resposta) {
+				
+		Gson gson = new Gson();
+		CoversorResposta objCliente = gson.fromJson(resposta, CoversorResposta.class);
+		
+		System.out.println( objCliente.getResult() );
+
+		
+	}
+
+}

@@ -1,0 +1,21 @@
+package conversororacle.view;
+
+import java.sql.Array;
+import java.util.ArrayList;
+
+import conversororacle.model.Moedas;
+
+public class MenuMoedas {
+	
+	public static ArrayList<String> display;
+	
+	public static void listaMoedas() {
+		
+		for (Moedas lista : Moedas.values()) {
+		      display.add(lista.getDescricao());
+		  }
+		System.out.println(display);
+		
+	}
+
+}

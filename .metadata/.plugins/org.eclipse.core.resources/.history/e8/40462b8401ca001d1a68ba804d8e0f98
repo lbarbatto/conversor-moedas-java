@@ -1,0 +1,87 @@
+package conversororacle.model;
+
+import conversororacle.view.MenuMoedas;
+
+public class CoversorResposta {
+	
+	private String result;
+	private String rate;
+	private String date;
+	
+	
+	public String getResult() {
+		return result;
+	}
+
+	public void setResult(String result) {
+		this.result = result;
+	}
+	public String getRate() {
+		return rate;
+	}
+	
+	public void setRate(String rate) {
+		this.rate = rate;
+	}
+	
+	public String getDate() {
+		return date;
+	}
+
+	public void setDate(String date) {
+		this.date = date;
+	}
+	
+	 @Override
+	    public String toString() {
+	        return "CoversorResposta{" + "result=" + result + ", rate=" + rate + ", date=" + date + '}';
+	    }
+	
+	public String converteRespostaConversor(String resposta, int index) {
+		
+		resposta.replaceAll("}", " ");
+		String [] stringArray = resposta.split(" ");
+		setRate(stringArray[64]);
+		setDate(stringArray[73]);
+		setResult(stringArray[78].replace("}", ""));		
+/*		for(int j=0; j < stringArray.length; j++){
+			System.out.println(j+stringArray[j]);
+		}
+*/	
+		System.out.println(rate + date + result);
+
+		MenuMoedas moedaSimbolo = new MenuMoedas();
+		String simbolo = moedaSimbolo.getSimboloMoeda(index);
+		
+		switch (index) {
+		case 0:
+			
+			
+			return simbolo+" "+result+System.lineSeparator()+rate;
+
+		case 1:
+			
+			break;
+			
+		case 2:
+			
+			break;
+			
+		case 3:
+			
+			break;
+			
+		case 4:
+			
+			break;
+			
+		case 5:
+			
+			break;
+		}
+		return simbolo;
+		
+	}
+
+
+}

@@ -1,0 +1,11 @@
+package conversororacle.model;
+
+public enum Moedas {
+	ARGENTINA,
+	BRASIL,
+	ESTADOSUNIDOS,
+	CHILE,
+	REINOUNIDO,
+	UNIÃOEURPEIA;
+
+}

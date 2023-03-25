@@ -1,0 +1,30 @@
+package conversororacle.controller;
+
+import javax.swing.JOptionPane;
+
+public class ValidaEntrada {
+	
+	public String getAmount(String entrada) {
+		
+		entrada = entrada.replaceAll(",",  ".");
+		return entrada;
+		
+	}
+	
+	public Boolean entradaValida(String entrada) {
+				
+	    if(entrada.equals("")){  
+	        JOptionPane.showMessageDialog(null, "Campo Valor não pode ser vazio","Erro de preenchimento", 0, null);
+	        return false; 
+	    }
+	    try {
+	        Double.parseDouble(entrada);
+	    } catch (NumberFormatException e) {
+	        JOptionPane.showMessageDialog(null, "Campo Valor não é um número","Erro de preenchimento", 0, null);
+	        return false;
+	    }
+	    return true; 
+
+	}
+
+}

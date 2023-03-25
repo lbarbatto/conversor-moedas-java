@@ -1,0 +1,39 @@
+package conversororacle.model;
+
+import java.util.ArrayList;
+
+public enum Moedas {
+	
+	A("ARS", "Argentina - Peso"),
+	B("BRL", "Brasil - Real"),
+	C("CLP", "Chile - Peso"),
+	D("USD", "Estados Unidos - Dólar"),
+	E("GBP", "Reino Unido - Libra Esterlina"),
+	F("EUR", "União Europeia - Euro");
+	
+	private final String indice;
+    private static final String descricao = "";
+	static ArrayList<String> display;
+
+    Moedas(String indice, String descricao) {
+        this.indice = indice;
+        descricao = Moedas.descricao;
+    }
+
+    public String getIndice() {
+        return this.indice;
+    }
+    public String getDescricao() {
+        return descricao;
+    }   
+
+	
+	public static ArrayList<String> listaMoedas() {
+		
+		for (Moedas lista : Moedas.values()) {
+		      display.add(lista.getDescricao());
+		  }
+		return display;
+
+	}
+}

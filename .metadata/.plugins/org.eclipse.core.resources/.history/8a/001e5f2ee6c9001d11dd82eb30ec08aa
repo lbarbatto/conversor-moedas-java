@@ -1,0 +1,16 @@
+package conversororacle.model;
+
+public class JsonParaObjeto {
+	
+	public void converteResposta(String resposta) {
+				
+		
+		String [] stringArray = resposta.split(" ");
+	        for(int j=0; j < stringArray.length; j++){
+	            System.out.println(stringArray[j]);
+	        }
+	        System.out.println(stringArray[78]);
+		
+	}
+
+}
