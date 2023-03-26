@@ -83,9 +83,9 @@ um link para este repositório.
 
 :memo: Revisão da arquitetura 
 
-:memo: Novo Layout
+:memo: Novo painel dashboard
 
-:memo: Implementação para Web com consumo de uma API financeira
+:memo: Implementação de mais funcionalidades da API financeira
 
 
 
