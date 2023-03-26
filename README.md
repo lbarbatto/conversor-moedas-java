@@ -2,10 +2,10 @@
 <br>
 <br>
 <img align="right" src="https://github.com/lbarbatto/conversor-de-moedas/blob/main/source/img/lb_backend_alura_002.png">
-<br>
-<br>
-<h1>Challenge ONE Back End: Java - Sprint 01: Conversor de Moedas</h1> 
 
+<h1>Challenge ONE Back End: Java - Sprint 01: Conversor de Moedas</h1> 
+<br>
+<br>
 <p align="center">
   <img src="https://img.shields.io/static/v1?label=JAVA&message=11&color=yellow&style=for-the-badge"/>
   <img src="http://img.shields.io/static/v1?label=ALURA&message=T4-BackEnd&color=darkblue&style=for-the-badge"/>
