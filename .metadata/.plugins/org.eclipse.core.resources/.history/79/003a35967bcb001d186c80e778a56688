@@ -9,6 +9,8 @@ import javax.swing.border.EmptyBorder;
 import conversororacle.controller.ClienteHttp;
 import conversororacle.controller.ValidaEntrada;
 import conversororacle.model.CambioReal;
+import conversororacle.model.CoversorResposta;
+
 import javax.swing.JLabel;
 import javax.swing.JButton;
 import java.awt.Font;
@@ -25,6 +27,8 @@ import java.awt.Color;
 import javax.swing.border.LineBorder;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.ContainerAdapter;
+import java.awt.event.ContainerEvent;
 import javax.swing.JTextArea;
 
 public class TelaPrincipal extends JFrame {
@@ -78,7 +82,7 @@ public class TelaPrincipal extends JFrame {
 		panelConversor.setFocusCycleRoot(true);
 		panelConversor.setName("painelConversor");
 		panelConversor.setBackground(new Color(128, 0, 0));
-		panelConversor.setBounds(152, 130, 480, 350);
+		panelConversor.setBounds(152, 131, 480, 350);
 		contentPane.add(panelConversor);
 		panelConversor.setLayout(null);
 
@@ -111,7 +115,7 @@ public class TelaPrincipal extends JFrame {
 		lblNewLabel_1.setBounds(10, 180, 235, 30);
 		panelConversor.add(lblNewLabel_1);
 
-		JComboBox<Object> boxDe = new JComboBox<Object>();
+		JComboBox boxDe = new JComboBox();
 		boxDe.setFocusTraversalKeysEnabled(false);
 		boxDe.setFocusable(false);
 		boxDe.addActionListener(new ActionListener() {
@@ -124,13 +128,13 @@ public class TelaPrincipal extends JFrame {
 		boxDe.setBorder(null);
 		boxDe.setBackground(new Color(255, 255, 255));
 		boxDe.setForeground(new Color(64, 0, 0));
-		boxDe.setModel(new DefaultComboBoxModel<Object>(new MenuMoedas().getListaMoedas()));
+		boxDe.setModel(new DefaultComboBoxModel(new MenuMoedas().getListaMoedas()));
 		boxDe.setSelectedIndex(0);
 		boxDe.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		boxDe.setBounds(10, 130, 235, 30);
 		panelConversor.add(boxDe);
 
-		JComboBox<Object> boxPara = new JComboBox<Object>();
+		JComboBox boxPara = new JComboBox();
 		boxPara.setFocusable(false);
 		boxPara.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -143,7 +147,7 @@ public class TelaPrincipal extends JFrame {
 		boxPara.setForeground(new Color(64, 0, 0));
 		boxPara.setBackground(new Color(255, 255, 255));
 		boxPara.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		boxPara.setModel(new DefaultComboBoxModel<Object>(new MenuMoedas().getListaMoedas()));
+		boxPara.setModel(new DefaultComboBoxModel(new MenuMoedas().getListaMoedas()));
 		boxPara.setSelectedIndex(1);
 		boxPara.setBounds(10, 210, 235, 30);
 		panelConversor.add(boxPara);
@@ -205,7 +209,8 @@ public class TelaPrincipal extends JFrame {
 
 		JLabel lblNewLabel_5 = new JLabel("");
 		lblNewLabel_5.setHorizontalTextPosition(SwingConstants.CENTER);
-		lblNewLabel_5.setIcon(new ImageIcon(TelaPrincipal.class.getResource("/conversororacle/view/img/oracle.png")));
+		lblNewLabel_5.setIcon(new ImageIcon(
+				"D:\\_Alura\\009_conversor_v02\\_dev\\conversororacle\\src\\conversororacle\\view\\img\\oracle.png"));
 		lblNewLabel_5.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_5.setFont(new Font("Verdana", Font.PLAIN, 11));
 		lblNewLabel_5.setBounds(50, 10, 100, 100);
@@ -337,35 +342,36 @@ public class TelaPrincipal extends JFrame {
 
 		JLabel lblNewLabel_9 = new JLabel("New label");
 		lblNewLabel_9.setBorder(new LineBorder(new Color(255, 255, 255), 2));
-		lblNewLabel_9.setIcon(new ImageIcon(TelaPrincipal.class.getResource("/conversororacle/view/img/flagArg.png")));
+		lblNewLabel_9.setIcon(new ImageIcon(
+				"D:\\_Alura\\009_conversor_v02\\_dev\\conversororacle\\src\\conversororacle\\view\\img\\flagArg.png"));
 		lblNewLabel_9.setBounds(10, 80, 200, 60);
 		panelIndicadores.add(lblNewLabel_9);
 
 		JLabel lblNewLabel_9_1 = new JLabel("");
 		lblNewLabel_9_1.setBorder(new LineBorder(new Color(255, 255, 255), 2));
 		lblNewLabel_9_1.setBackground(new Color(255, 255, 255));
-		lblNewLabel_9_1
-				.setIcon(new ImageIcon(TelaPrincipal.class.getResource("/conversororacle/view/img/flagChi.png")));
+		lblNewLabel_9_1.setIcon(new ImageIcon(
+				"D:\\_Alura\\009_conversor_v02\\_dev\\conversororacle\\src\\conversororacle\\view\\img\\flagChi.png"));
 		lblNewLabel_9_1.setBounds(260, 80, 200, 60);
 		panelIndicadores.add(lblNewLabel_9_1);
 
 		JLabel lblNewLabel_9_2 = new JLabel("");
-		lblNewLabel_9_2
-				.setIcon(new ImageIcon(TelaPrincipal.class.getResource("/conversororacle/view/img/flagEua.png")));
+		lblNewLabel_9_2.setIcon(new ImageIcon(
+				"D:\\_Alura\\009_conversor_v02\\_dev\\conversororacle\\src\\conversororacle\\view\\img\\flagEua.png"));
 		lblNewLabel_9_2.setBorder(new LineBorder(new Color(255, 255, 255), 2));
 		lblNewLabel_9_2.setBounds(510, 80, 200, 60);
 		panelIndicadores.add(lblNewLabel_9_2);
 
 		JLabel lblNewLabel_9_2_1 = new JLabel("");
-		lblNewLabel_9_2_1
-				.setIcon(new ImageIcon(TelaPrincipal.class.getResource("/conversororacle/view/img/flagRu.png")));
+		lblNewLabel_9_2_1.setIcon(new ImageIcon(
+				"D:\\_Alura\\009_conversor_v02\\_dev\\conversororacle\\src\\conversororacle\\view\\img\\flagRu.png"));
 		lblNewLabel_9_2_1.setBorder(new LineBorder(new Color(255, 255, 255), 2));
 		lblNewLabel_9_2_1.setBounds(106, 200, 200, 60);
 		panelIndicadores.add(lblNewLabel_9_2_1);
 
 		JLabel lblNewLabel_9_2_1_1 = new JLabel("");
-		lblNewLabel_9_2_1_1
-				.setIcon(new ImageIcon(TelaPrincipal.class.getResource("/conversororacle/view/img/flagUeu.png")));
+		lblNewLabel_9_2_1_1.setIcon(new ImageIcon(
+				"D:\\_Alura\\009_conversor_v02\\_dev\\conversororacle\\src\\conversororacle\\view\\img\\flagUeu.png"));
 		lblNewLabel_9_2_1_1.setBorder(new LineBorder(new Color(255, 255, 255), 2));
 		lblNewLabel_9_2_1_1.setBounds(412, 200, 200, 60);
 		panelIndicadores.add(lblNewLabel_9_2_1_1);
@@ -378,7 +384,8 @@ public class TelaPrincipal extends JFrame {
 		panelInfos.setLayout(null);
 
 		JLabel lblNewLabel_10 = new JLabel("");
-		lblNewLabel_10.setIcon(new ImageIcon(TelaPrincipal.class.getResource("/conversororacle/view/img/lb.png")));
+		lblNewLabel_10.setIcon(new ImageIcon(
+				"D:\\_Alura\\009_conversor_v02\\_dev\\conversororacle\\src\\conversororacle\\view\\img\\lb.png"));
 		lblNewLabel_10.setBounds(10, 10, 202, 202);
 		panelInfos.add(lblNewLabel_10);
 
@@ -393,8 +400,8 @@ public class TelaPrincipal extends JFrame {
 		txtVersionamentoGit.setColumns(10);
 
 		JLabel lblNewLabel_12 = new JLabel("");
-		lblNewLabel_12
-				.setIcon(new ImageIcon(TelaPrincipal.class.getResource("/conversororacle/view/img/otica_Ativo 4.png")));
+		lblNewLabel_12.setIcon(new ImageIcon(
+				"D:\\_Alura\\009_conversor_v02\\_dev\\conversororacle\\src\\conversororacle\\view\\img\\otica_Ativo 4.png"));
 		lblNewLabel_12.setBounds(10, 227, 202, 25);
 		panelInfos.add(lblNewLabel_12);
 
@@ -429,20 +436,20 @@ public class TelaPrincipal extends JFrame {
 		panelInfos.add(txtGithubcomlbarbatto);
 
 		JLabel lblNewLabel_12_1 = new JLabel("");
-		lblNewLabel_12_1
-				.setIcon(new ImageIcon(TelaPrincipal.class.getResource("/conversororacle/view/img/otica_Ativo 4.png")));
+		lblNewLabel_12_1.setIcon(new ImageIcon(
+				"D:\\_Alura\\009_conversor_v02\\_dev\\conversororacle\\src\\conversororacle\\view\\img\\otica_Ativo 4.png"));
 		lblNewLabel_12_1.setBounds(10, 263, 202, 25);
 		panelInfos.add(lblNewLabel_12_1);
 
 		JLabel lblNewLabel_12_2 = new JLabel("");
-		lblNewLabel_12_2
-				.setIcon(new ImageIcon(TelaPrincipal.class.getResource("/conversororacle/view/img/otica_Ativo 4.png")));
+		lblNewLabel_12_2.setIcon(new ImageIcon(
+				"D:\\_Alura\\009_conversor_v02\\_dev\\conversororacle\\src\\conversororacle\\view\\img\\otica_Ativo 4.png"));
 		lblNewLabel_12_2.setBounds(10, 299, 202, 25);
 		panelInfos.add(lblNewLabel_12_2);
 
 		JLabel lblNewLabel_12_2_1 = new JLabel("");
-		lblNewLabel_12_2_1
-				.setIcon(new ImageIcon(TelaPrincipal.class.getResource("/conversororacle/view/img/otica_Ativo 4.png")));
+		lblNewLabel_12_2_1.setIcon(new ImageIcon(
+				"D:\\_Alura\\009_conversor_v02\\_dev\\conversororacle\\src\\conversororacle\\view\\img\\otica_Ativo 4.png"));
 		lblNewLabel_12_2_1.setBounds(10, 335, 202, 25);
 		panelInfos.add(lblNewLabel_12_2_1);
 
@@ -464,6 +471,7 @@ public class TelaPrincipal extends JFrame {
 		JButton btnNewButton_1 = new JButton("");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				ClienteHttp cliente = new ClienteHttp();
 				ClienteHttp.openWebpage("https://github.com/lbarbatto/conversor-moedas-java");
 			}
 		});
@@ -481,14 +489,14 @@ public class TelaPrincipal extends JFrame {
 		btnNewButton_1.setOpaque(false);
 		btnNewButton_1.setBackground(new Color(255, 128, 128));
 		btnNewButton_1.setBorder(null);
-		btnNewButton_1
-				.setIcon(new ImageIcon(TelaPrincipal.class.getResource("/conversororacle/view/img/github-logo.png")));
+		btnNewButton_1.setIcon(new ImageIcon(
+				"D:\\_Alura\\009_conversor_v02\\_dev\\conversororacle\\src\\conversororacle\\view\\img\\github-logo.png"));
 		btnNewButton_1.setBounds(433, 295, 70, 65);
 		panelInfos.add(btnNewButton_1);
 
 		JLabel lblNewLabel_11 = new JLabel("");
-		lblNewLabel_11
-				.setIcon(new ImageIcon(TelaPrincipal.class.getResource("/conversororacle/view/img/otica_Ativo 6.png")));
+		lblNewLabel_11.setIcon(new ImageIcon(
+				"D:\\_Alura\\009_conversor_v02\\_dev\\conversororacle\\src\\conversororacle\\view\\img\\otica_Ativo 6.png"));
 		lblNewLabel_11.setBounds(230, 10, 480, 350);
 		panelInfos.add(lblNewLabel_11);
 
@@ -518,8 +526,8 @@ public class TelaPrincipal extends JFrame {
 		});
 		btnTelaConversor.setBackground(new Color(255, 128, 128));
 		btnTelaConversor.setOpaque(false);
-		btnTelaConversor
-				.setIcon(new ImageIcon(TelaPrincipal.class.getResource("/conversororacle/view/img/calculadora.png")));
+		btnTelaConversor.setIcon(new ImageIcon(
+				"D:\\_Alura\\009_conversor_v02\\_dev\\conversororacle\\src\\conversororacle\\view\\img\\calculadora.png"));
 		btnTelaConversor.setToolTipText("CONVERSOR");
 		btnTelaConversor.setBounds(500, 60, 60, 60);
 		panel.add(btnTelaConversor);
@@ -547,6 +555,7 @@ public class TelaPrincipal extends JFrame {
 				ClienteHttp cliente = new ClienteHttp();
 
 				CambioReal cambio = (CambioReal) cliente.getCambio();
+				;
 				lblArg.setText(cambio.getArs());
 				lblChi.setText(cambio.getClp());
 				lblEua.setText(cambio.getUsd());
@@ -554,15 +563,16 @@ public class TelaPrincipal extends JFrame {
 				lblUe.setText(cambio.getEur());
 				lblData.setText(cambio.getData());
 
-//				System.out.println(cambio.getData() + cambio.getArs() + cambio.getClp() + cambio.getEur() + cambio.getGbp() + cambio.getUsd());
+				System.out.println(cambio.getData() + cambio.getArs() + cambio.getClp() + cambio.getEur()
+						+ cambio.getGbp() + cambio.getUsd());
 
 			}
 		});
 		btnTelaIndicadores.setBackground(new Color(255, 128, 128));
 		btnTelaIndicadores.setOpaque(false);
 		btnTelaIndicadores.setBorder(null);
-		btnTelaIndicadores
-				.setIcon(new ImageIcon(TelaPrincipal.class.getResource("/conversororacle/view/img/indicadores.png")));
+		btnTelaIndicadores.setIcon(new ImageIcon(
+				"D:\\_Alura\\009_conversor_v02\\_dev\\conversororacle\\src\\conversororacle\\view\\img\\indicadores.png"));
 		btnTelaIndicadores.setToolTipText("INDICADORES");
 		btnTelaIndicadores.setBounds(570, 60, 60, 60);
 		panel.add(btnTelaIndicadores);
@@ -593,7 +603,8 @@ public class TelaPrincipal extends JFrame {
 		btnInfos.setBackground(new Color(255, 128, 128));
 		btnInfos.setOpaque(false);
 		btnInfos.setBorder(null);
-		btnInfos.setIcon(new ImageIcon(TelaPrincipal.class.getResource("/conversororacle/view/img/informacoes.png")));
+		btnInfos.setIcon(new ImageIcon(
+				"D:\\_Alura\\009_conversor_v02\\_dev\\conversororacle\\src\\conversororacle\\view\\img\\informacoes.png"));
 		btnInfos.setToolTipText("INFORMAÇÕES");
 		btnInfos.setBounds(640, 60, 60, 60);
 		panel.add(btnInfos);
