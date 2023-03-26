@@ -28,6 +28,9 @@ import java.awt.Color;
 import javax.swing.border.LineBorder;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.ContainerAdapter;
+import java.awt.event.ContainerEvent;
+import javax.swing.JTextArea;
 
 public class TelaPrincipal extends JFrame {
 
@@ -39,6 +42,10 @@ public class TelaPrincipal extends JFrame {
 	private JTextField textEntrada;
 	private String from;
 	private String to;
+	private JTextField txtVersionamentoGit;
+	private JTextField txtConsumoDeApi;
+	private JTextField txtEstruturaMvcJava;
+	private JTextField txtGithubcomlbarbatto;
 
 	/**
 	 * Launch the application.
@@ -72,11 +79,23 @@ public class TelaPrincipal extends JFrame {
 		contentPane.setLayout(null);
 		
 		JPanel panelConversor = new JPanel();
+		panelConversor.setFocusCycleRoot(true);
 		panelConversor.setName("painelConversor");
 		panelConversor.setBackground(new Color(128, 0, 0));
-		panelConversor.setBounds(152, 150, 480, 350);
+		panelConversor.setBounds(152, 131, 480, 350);
 		contentPane.add(panelConversor);
 		panelConversor.setLayout(null);		
+				
+				textEntrada = new JTextField();
+				textEntrada.setHorizontalAlignment(SwingConstants.CENTER);
+				textEntrada.setBorder(null);
+				textEntrada.setForeground(new Color(64, 0, 0));
+				textEntrada.setBackground(new Color(255, 255, 255));
+				textEntrada.setFont(new Font("Verdana", Font.PLAIN, 16));
+				textEntrada.setBounds(335, 130, 120, 30);
+				panelConversor.add(textEntrada);
+				textEntrada.setColumns(10);
+
 		
 				JLabel lblResultado = new JLabel("");
 				lblResultado.setForeground(new Color(255, 255, 255));
@@ -98,6 +117,8 @@ public class TelaPrincipal extends JFrame {
 				panelConversor.add(lblNewLabel_1);
 				
 				JComboBox boxDe = new JComboBox();
+				boxDe.setFocusTraversalKeysEnabled(false);
+				boxDe.setFocusable(false);
 				boxDe.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						int index = boxDe.getSelectedIndex();
@@ -115,6 +136,7 @@ public class TelaPrincipal extends JFrame {
 				panelConversor.add(boxDe);
 				
 				JComboBox boxPara = new JComboBox();
+				boxPara.setFocusable(false);
 				boxPara.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						int index = boxPara.getSelectedIndex();
@@ -144,17 +166,6 @@ public class TelaPrincipal extends JFrame {
 				lblNewLabel_3.setFont(new Font("Verdana", Font.PLAIN, 14));
 				lblNewLabel_3.setBounds(345, 100, 100, 30);
 				panelConversor.add(lblNewLabel_3);
-				
-				textEntrada = new JTextField();
-				textEntrada.setDragEnabled(true);
-				textEntrada.setHorizontalAlignment(SwingConstants.CENTER);
-				textEntrada.setBorder(null);
-				textEntrada.setForeground(new Color(64, 0, 0));
-				textEntrada.setBackground(new Color(255, 255, 255));
-				textEntrada.setFont(new Font("Verdana", Font.PLAIN, 16));
-				textEntrada.setBounds(335, 130, 120, 30);
-				panelConversor.add(textEntrada);
-				textEntrada.setColumns(10);
 				
 				JLabel lblNewLabel_4 = new JLabel("Valor Convertido:");
 				lblNewLabel_4.setForeground(new Color(255, 255, 255));
@@ -208,7 +219,7 @@ public class TelaPrincipal extends JFrame {
 		panel.add(lblNewLabel_5);
 		
 		JPanel panelIndicadores = new JPanel();
-		panelIndicadores.setBounds(32, 150, 720, 380);
+		panelIndicadores.setBounds(32, 131, 720, 380);
 		contentPane.add(panelIndicadores);
 		panelIndicadores.setVisible(false);
 		panelIndicadores.setName("painelIndicadores");
@@ -362,10 +373,128 @@ public class TelaPrincipal extends JFrame {
 		lblNewLabel_9_2_1_1.setBounds(412, 200, 200, 60);
 		panelIndicadores.add(lblNewLabel_9_2_1_1);
 		
+		JPanel panelInfos = new JPanel();
+		panelInfos.setVisible(false);
+		panelInfos.setBackground(new Color(128, 0, 0));
+		panelInfos.setBounds(32, 130, 720, 370);
+		contentPane.add(panelInfos);
+		panelInfos.setLayout(null);
+		
+		JLabel lblNewLabel_10 = new JLabel("");
+		lblNewLabel_10.setIcon(new ImageIcon("D:\\_Alura\\009_conversor_v02\\_dev\\conversororacle\\src\\conversororacle\\view\\img\\lb.png"));
+		lblNewLabel_10.setBounds(10, 10, 202, 202);
+		panelInfos.add(lblNewLabel_10);
+		
+		txtVersionamentoGit = new JTextField();
+		txtVersionamentoGit.setBorder(null);
+		txtVersionamentoGit.setForeground(new Color(64, 0, 0));
+		txtVersionamentoGit.setFont(new Font("Verdana", Font.BOLD, 12));
+		txtVersionamentoGit.setHorizontalAlignment(SwingConstants.CENTER);
+		txtVersionamentoGit.setText("VERSIONAMENTO GIT");
+		txtVersionamentoGit.setBounds(21, 229, 180, 20);
+		panelInfos.add(txtVersionamentoGit);
+		txtVersionamentoGit.setColumns(10);
+		
+		JLabel lblNewLabel_12 = new JLabel("");
+		lblNewLabel_12.setIcon(new ImageIcon("D:\\_Alura\\009_conversor_v02\\_dev\\conversororacle\\src\\conversororacle\\view\\img\\otica_Ativo 4.png"));
+		lblNewLabel_12.setBounds(10, 227, 202, 25);
+		panelInfos.add(lblNewLabel_12);
+		
+		txtConsumoDeApi = new JTextField();
+		txtConsumoDeApi.setBorder(null);
+		txtConsumoDeApi.setForeground(new Color(64, 0, 0));
+		txtConsumoDeApi.setFont(new Font("Verdana", Font.BOLD, 12));
+		txtConsumoDeApi.setHorizontalAlignment(SwingConstants.CENTER);
+		txtConsumoDeApi.setText("CONSUMO DE API");
+		txtConsumoDeApi.setColumns(10);
+		txtConsumoDeApi.setBounds(20, 265, 180, 20);
+		panelInfos.add(txtConsumoDeApi);
+		
+		txtEstruturaMvcJava = new JTextField();
+		txtEstruturaMvcJava.setBorder(null);
+		txtEstruturaMvcJava.setForeground(new Color(64, 0, 0));
+		txtEstruturaMvcJava.setFont(new Font("Verdana", Font.BOLD, 12));
+		txtEstruturaMvcJava.setHorizontalAlignment(SwingConstants.CENTER);
+		txtEstruturaMvcJava.setText("ESTRUTURA MVC, JAVA");
+		txtEstruturaMvcJava.setColumns(10);
+		txtEstruturaMvcJava.setBounds(20, 301, 180, 20);
+		panelInfos.add(txtEstruturaMvcJava);
+		
+		txtGithubcomlbarbatto = new JTextField();
+		txtGithubcomlbarbatto.setBorder(null);
+		txtGithubcomlbarbatto.setForeground(new Color(64, 0, 0));
+		txtGithubcomlbarbatto.setFont(new Font("Verdana", Font.BOLD, 12));
+		txtGithubcomlbarbatto.setHorizontalAlignment(SwingConstants.CENTER);
+		txtGithubcomlbarbatto.setText("github.com/lbarbatto");
+		txtGithubcomlbarbatto.setColumns(10);
+		txtGithubcomlbarbatto.setBounds(20, 337, 180, 20);
+		panelInfos.add(txtGithubcomlbarbatto);
+		
+		JLabel lblNewLabel_12_1 = new JLabel("");
+		lblNewLabel_12_1.setIcon(new ImageIcon("D:\\_Alura\\009_conversor_v02\\_dev\\conversororacle\\src\\conversororacle\\view\\img\\otica_Ativo 4.png"));
+		lblNewLabel_12_1.setBounds(10, 263, 202, 25);
+		panelInfos.add(lblNewLabel_12_1);
+		
+		JLabel lblNewLabel_12_2 = new JLabel("");
+		lblNewLabel_12_2.setIcon(new ImageIcon("D:\\_Alura\\009_conversor_v02\\_dev\\conversororacle\\src\\conversororacle\\view\\img\\otica_Ativo 4.png"));
+		lblNewLabel_12_2.setBounds(10, 299, 202, 25);
+		panelInfos.add(lblNewLabel_12_2);
+		
+		JLabel lblNewLabel_12_2_1 = new JLabel("");
+		lblNewLabel_12_2_1.setIcon(new ImageIcon("D:\\_Alura\\009_conversor_v02\\_dev\\conversororacle\\src\\conversororacle\\view\\img\\otica_Ativo 4.png"));
+		lblNewLabel_12_2_1.setBounds(10, 335, 202, 25);
+		panelInfos.add(lblNewLabel_12_2_1);
+		
+		JTextArea txtrAplicaoDesenvolvidaDurante = new JTextArea();
+		txtrAplicaoDesenvolvidaDurante.setForeground(new Color(64, 0, 0));
+		txtrAplicaoDesenvolvidaDurante.setFont(new Font("Verdana", Font.PLAIN, 15));
+		txtrAplicaoDesenvolvidaDurante.setText("Aplicação desenvolvida durante a formação da turma 4 \r\ndo Programa ONE - Oracle Next Education em parceria \r\ncom a Alura.\r\n\r\nUtilizando JAVA, esta aplicação é capaz de converter \r\ndeterminadas moedas aplicando a cotação atualizada \r\natravés do consumo da API ExchangeRate.\r\n\r\nA primeira versão da aplicação foi feita com JAVA 1.8, \r\nmas esta nova versão foi desenvolvida com JAVA 11, e \r\ntodos os projetos estão no repositório do github.\r\n");
+		txtrAplicaoDesenvolvidaDurante.setBounds(258, 60, 424, 232);
+		panelInfos.add(txtrAplicaoDesenvolvidaDurante);
+		
+		JLabel lblNewLabel_13 = new JLabel("INFORMAÇÕES");
+		lblNewLabel_13.setForeground(new Color(64, 0, 0));
+		lblNewLabel_13.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_13.setFont(new Font("Verdana", Font.BOLD, 24));
+		lblNewLabel_13.setBounds(363, 20, 215, 40);
+		panelInfos.add(lblNewLabel_13);
+		
+		JButton btnNewButton_1 = new JButton("");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ClienteHttp cliente = new ClienteHttp();
+				ClienteHttp.openWebpage("https://github.com/lbarbatto");				
+			}
+		});
+		btnNewButton_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				btnNewButton_1.setOpaque(true);
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				btnNewButton_1.setOpaque(false);
+			}
+		});
+		btnNewButton_1.setOpaque(false);
+		btnNewButton_1.setBackground(new Color(255, 128, 128));
+		btnNewButton_1.setBorder(null);
+		btnNewButton_1.setIcon(new ImageIcon("D:\\_Alura\\009_conversor_v02\\_dev\\conversororacle\\src\\conversororacle\\view\\img\\github-logo.png"));
+		btnNewButton_1.setBounds(433, 295, 70, 65);
+		panelInfos.add(btnNewButton_1);
+		
+		JLabel lblNewLabel_11 = new JLabel("");
+		lblNewLabel_11.setIcon(new ImageIcon("D:\\_Alura\\009_conversor_v02\\_dev\\conversororacle\\src\\conversororacle\\view\\img\\otica_Ativo 6.png"));
+		lblNewLabel_11.setBounds(230, 10, 480, 350);
+		panelInfos.add(lblNewLabel_11);
+		
+		
 		JButton btnTelaConversor = new JButton("");
-		btnTelaConversor.setRequestFocusEnabled(false);
-		btnTelaConversor.setRolloverEnabled(false);
-		btnTelaConversor.setBorder(new LineBorder(new Color(128, 0, 0), 3));
+		btnTelaConversor.setFocusable(false);
+		btnTelaConversor.setFocusTraversalKeysEnabled(false);
+		btnTelaConversor.setFocusPainted(false);
+		btnTelaConversor.setBorderPainted(false);
+		btnTelaConversor.setBorder(null);
 		btnTelaConversor.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
@@ -380,6 +509,7 @@ public class TelaPrincipal extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				panelConversor.setVisible(true);
 				panelIndicadores.setVisible(false);
+				panelInfos.setVisible(false);
 			}
 		});
 		btnTelaConversor.setBackground(new Color(255, 128, 128));
@@ -390,6 +520,9 @@ public class TelaPrincipal extends JFrame {
 		panel.add(btnTelaConversor);
 		
 		JButton btnTelaIndicadores = new JButton("");
+		btnTelaIndicadores.setFocusable(false);
+		btnTelaIndicadores.setFocusTraversalKeysEnabled(false);
+		btnTelaIndicadores.setFocusPainted(false);
 		btnTelaIndicadores.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
@@ -404,6 +537,7 @@ public class TelaPrincipal extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				panelConversor.setVisible(false);
 				panelIndicadores.setVisible(true);
+				panelInfos.setVisible(false);
 				ClienteHttp cliente = new ClienteHttp();
 				
 				CambioReal cambio = (CambioReal) cliente.getCambio();;
@@ -427,6 +561,17 @@ public class TelaPrincipal extends JFrame {
 		panel.add(btnTelaIndicadores);
 		
 		JButton btnInfos = new JButton("");
+		btnInfos.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				panelConversor.setVisible(false);
+				panelIndicadores.setVisible(false);
+				panelInfos.setVisible(true);
+				
+			}
+		});
+		btnInfos.setFocusable(false);
+		btnInfos.setFocusTraversalKeysEnabled(false);
+		btnInfos.setFocusPainted(false);
 		btnInfos.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {

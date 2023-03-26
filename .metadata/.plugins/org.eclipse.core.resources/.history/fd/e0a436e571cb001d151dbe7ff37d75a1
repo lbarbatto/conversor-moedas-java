@@ -15,7 +15,7 @@ public class EditaResposta {
 //		for(int j=0; j < resultado.length; j++){
 //			System.out.println(j+resultado[j]);
 //		}
-//		System.out.println(valor);
+		System.out.println(valor);
 
 		String simbolo = moedaSimbolo.getSimboloMoeda(index);
 		

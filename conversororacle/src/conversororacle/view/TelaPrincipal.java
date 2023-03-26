@@ -67,6 +67,7 @@ public class TelaPrincipal extends JFrame {
 	 * Create the frame.
 	 */
 	public TelaPrincipal() {
+		setResizable(false);
 		setTitle("Oracle One Educatio");
 		setFont(new Font("Verdana", Font.PLAIN, 14));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

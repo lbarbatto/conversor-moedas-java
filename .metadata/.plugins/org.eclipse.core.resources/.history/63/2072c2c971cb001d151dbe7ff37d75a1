@@ -9,39 +9,39 @@ public class EditaResposta {
 				
 		String [] stringArray = resposta.split(",");
 		String[] resultado = stringArray[12].split(":");
-		double valor =  Double.parseDouble(resultado[1].replaceAll("}", ""));
+		double valor = Double.parseDouble(resultado[1].replaceAll("}", ""));
 		String respostaFinal;
 
 //		for(int j=0; j < resultado.length; j++){
 //			System.out.println(j+resultado[j]);
 //		}
-//		System.out.println(valor);
+		System.out.println(valor);
 
 		String simbolo = moedaSimbolo.getSimboloMoeda(index);
 		
 		switch (index) {
 		case 0:			
-			respostaFinal = simbolo+" "+formatDouble(valor);
+			respostaFinal = simbolo+" "+valor;
 			return respostaFinal;
 
 		case 1:
-			respostaFinal = simbolo+" "+formatDouble(valor);
+			respostaFinal = simbolo+" "+valor;
 			return respostaFinal;
 			
 		case 2:
-			respostaFinal = simbolo+" "+formatDouble(valor);
+			respostaFinal = simbolo+" "+valor;
 			return respostaFinal;
 			
 		case 3:
-			respostaFinal = simbolo+" "+formatDouble(valor);
+			respostaFinal = simbolo+" "+valor;
 			return respostaFinal;
 			
 		case 4:
-			respostaFinal = simbolo+" "+formatDouble(valor);
+			respostaFinal = simbolo+" "+valor;
 			return respostaFinal;
 			
 		case 5:
-			respostaFinal = formatDouble(valor)+" "+simbolo;
+			respostaFinal = valor+" "+simbolo;
 			return respostaFinal;
 		}
 		return null;		
