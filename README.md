@@ -1,6 +1,6 @@
 # Alura ONE - Oracle Next Education
 <br>
-<img align="right" src="https://github.com/lbarbatto/conversor-de-moedas/blob/main/source/img/lb_backend_alura_002.png">
+<img align="right" src="https://github.com/lbarbatto/conversor-de-moedas/blob/main/source/img/lb_backend_alura_002.png" height="300">
 
 <h1>Challenge ONE Back End: Java - Sprint 01: Conversor de Moedas</h1> 
 
@@ -25,9 +25,13 @@
 
 :small_blue_diamond: [Tarefas em aberto](#tarefas-em-aberto)
 
+:small_blue_diamond: [Tarefas em aberto](#tarefas-em-aberto)
+
 ... 
 
 ## Descrição do projeto 
+
+<img align="center" src="https://github.com/lbarbatto/conversor-moedas-java/blob/main/extra/conversor_uso.gif">
 
 <p align="justify">
   Conversor de moedas e exibição das taxas de câmbio em relação ao Real brasileiro através do consumo da API ExchangeRate (https://app.exchangerate-api.com) , e utilizando JPanel na versão 11 do Java para criação de telas e menus.
