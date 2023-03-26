@@ -30,7 +30,7 @@
 ## Descrição do projeto 
 
 <p align="justify">
-  Conversor de moedas e exibição das taxas de câmbio em relação ao Real brasileiro através do consumo da API [ExchangeRate](https://app.exchangerate-api.com), e utilizando JPanel na versão 11 do Java para criação de telas e menus.
+  Conversor de moedas e exibição das taxas de câmbio em relação ao Real brasileiro através do consumo da API [ExchangeRate](https://app.exchangerate-api.com) [ExchangeRate](https://app.exchangerate-api.com), e utilizando JPanel na versão 11 do Java para criação de telas e menus.
   A API fornece mais dados que futuramente serão implementados com novas funcionalidades além de melhorias gráficas.
 </p>
 
