@@ -64,7 +64,7 @@
 
 ## Download da aplicação :dash:
 
-> Baixe a Aplicação [AQUI](https://github.com/lbarbatto/conversor-de-moedas/raw/main/final/lbarbatto-alura-oracle-one-conversor-v002.jar) :
+> Baixe a Aplicação [AQUI](https://github.com/lbarbatto/conversor-moedas-java/raw/main/final/conversor-oracle-v2.jar) :
 
 Baixe o Arquivo e execute a aplicação.
 
