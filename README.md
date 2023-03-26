@@ -1,6 +1,10 @@
-# Alura ONE - Oracle Next Education
+
 
 <img align="right" src="https://github.com/lbarbatto/conversor-de-moedas/blob/main/source/img/lb_backend_alura_002.png">
+<br>
+<br>
+
+# Alura ONE - Oracle Next Education
 
 <h1>Challenge ONE Back End: Java - Sprint 01: Conversor de Moedas</h1> 
 
