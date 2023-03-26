@@ -32,4 +32,5 @@
     <fullyQualifiedTypeName name="javax.swing.JPanel"/>
     <fullyQualifiedTypeName name="conversororacle.model.CambioReal"/>
     <fullyQualifiedTypeName name="java.net.URL"/>
+    <fullyQualifiedTypeName name="conversororacle.controller.TerminalFuncionario"/>
 </qualifiedTypeNameHistroy>

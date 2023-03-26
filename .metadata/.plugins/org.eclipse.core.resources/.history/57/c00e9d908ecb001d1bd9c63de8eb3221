@@ -1,0 +1,15 @@
+package conversororacle.controller;
+
+public class TerminalFuncionario {
+	
+	public void btfinal() {
+		NovaClasse cliente = new NovaClasse();
+		cliente.setCpf("142536");
+		cliente.setNome("marck");
+		
+		System.out.println("Bem Vindo:" + cliente.getNome());
+		
+				
+	}
+
+}

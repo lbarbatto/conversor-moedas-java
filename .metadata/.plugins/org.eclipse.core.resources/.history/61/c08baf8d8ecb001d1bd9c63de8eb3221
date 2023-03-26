@@ -1,0 +1,30 @@
+package conversororacle.controller;
+
+public class NovaClasse {
+	
+	private String cpf;
+	private String nome;
+	private boolean cadastrado;
+	
+	public String getCpf() {
+		return cpf;
+	}
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
+	}
+	public String getNome() {
+		return nome;
+	}
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+	public boolean isCadastrado() {
+		return cadastrado;
+	}
+	public void setCadastrado(boolean cadastrado) {
+		this.cadastrado = cadastrado;
+	}
+	
+	
+
+}
